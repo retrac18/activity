@@ -16,7 +16,8 @@ define([
       className: 'entry',
 
       events: {
-        'change .done': 'toggleDone'
+        'change .done': 'toggleDone',
+        'click .delete': 'delList'
       },
 
       render: function() {
@@ -28,6 +29,9 @@ define([
           _self.$el.removeClass('removeList');
         }
         
+
+        //this.remove('delList');
+
         return _self;
       },
 
@@ -40,6 +44,11 @@ define([
       toggleDone: function(e) {
         //e.preventDefault();
         this.model.set('done',!this.model.get('done'));
+      },
+
+      delList: function (e) {
+              e.preventDefault();
+              this.remove();              
       }
     });
 
